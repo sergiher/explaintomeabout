@@ -20,13 +20,13 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
+              className="invert"
+              src="/party-horn.svg"
+              alt="Let's learn"
               width={20}
               height={20}
             />
-            Deploy now
+            Let's go!
           </a>
         </div>
       </main>
