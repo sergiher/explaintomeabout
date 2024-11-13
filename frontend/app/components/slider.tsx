@@ -11,6 +11,10 @@ const Input = styled(MuiInput)`
   width: 42px;
 `;
 
+const maxExplainTime: number = parseInt(
+  process.env.NEXT_PUBLIC_MAX_EXPLAIN_TIME as string
+);
+
 export default function InputSlider() {
   const [value, setValue] = React.useState(10);
 
@@ -25,8 +29,8 @@ export default function InputSlider() {
   const handleBlur = () => {
     if (value < 1) {
       setValue(1);
-    } else if (value > 60) {
-      setValue(60);
+    } else if (value > maxExplainTime) {
+      setValue(maxExplainTime);
     }
   };
 
@@ -42,7 +46,7 @@ export default function InputSlider() {
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
             min={1}
-            max={60}
+            max={maxExplainTime}
           />
         </Grid>
         <Grid item style={{ display: "inline-flex" }}>
@@ -54,7 +58,7 @@ export default function InputSlider() {
             inputProps={{
               step: 1,
               min: 1,
-              max: 60,
+              max: maxExplainTime,
               type: "number",
               "aria-labelledby": "input-slider",
             }}
