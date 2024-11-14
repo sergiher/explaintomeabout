@@ -14,7 +14,7 @@ def initApi():
     subject = request.json.get("subjectToLearnAbout")
     timeToExplain = request.json.get("timeToExplain")
     reformulatedQuestion = (
-        "explain me about "
+        "please, explain me about "
         + subject
         + " as if you were speaking for "
         + str(timeToExplain)
