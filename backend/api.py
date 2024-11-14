@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, stream_template
+from flask import Flask, jsonify, request
 from flask_cors import CORS  # type: ignore
 from gemini_class import myGeminiAI
 
