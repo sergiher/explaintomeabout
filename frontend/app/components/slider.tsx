@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
-import UpdateIcon from "@mui/icons-material/Update";
 import Typography from "@mui/material/Typography";
+import { useState } from "react";
 
 const Input = styled(MuiInput)`
   width: 42px;
@@ -15,34 +15,39 @@ const maxExplainTime: number = parseInt(
   process.env.NEXT_PUBLIC_MAX_EXPLAIN_TIME as string
 );
 
-export default function InputSlider() {
-  const [value, setValue] = React.useState(10);
+type SliderData = {
+  timeToExplain: number;
+  setTimeToExplain: (timeToExplain: number) => void;
+};
 
+export default function InputSlider({
+  timeToExplain,
+  setTimeToExplain,
+}: SliderData) {
   const handleSliderChange = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number);
+    setTimeToExplain(newValue as number);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value === "" ? 0 : Number(event.target.value));
+    setTimeToExplain(
+      event.target.value === "" ? 0 : Number(event.target.value)
+    );
   };
 
   const handleBlur = () => {
-    if (value < 1) {
-      setValue(1);
-    } else if (value > maxExplainTime) {
-      setValue(maxExplainTime);
+    if (timeToExplain < 1) {
+      setTimeToExplain(1);
+    } else if (timeToExplain > maxExplainTime) {
+      setTimeToExplain(maxExplainTime);
     }
   };
 
   return (
     <Box sx={{ width: 306 }}>
       <Grid container spacing={4}>
-        <Grid item>
-          <UpdateIcon />
-        </Grid>
         <Grid item xs>
           <Slider
-            value={typeof value === "number" ? value : 0}
+            value={typeof timeToExplain === "number" ? timeToExplain : 0}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
             min={1}
@@ -51,7 +56,8 @@ export default function InputSlider() {
         </Grid>
         <Grid item style={{ display: "inline-flex" }}>
           <Input
-            value={value}
+            value={timeToExplain}
+            name="timeToExplain"
             size="small"
             onChange={handleInputChange}
             onBlur={handleBlur}
@@ -65,7 +71,7 @@ export default function InputSlider() {
           />{" "}
           <Typography>
             minute
-            <span style={value === 1 ? { color: "white" } : {}}>s</span>
+            <span style={timeToExplain === 1 ? { color: "white" } : {}}>s</span>
           </Typography>
         </Grid>
       </Grid>
