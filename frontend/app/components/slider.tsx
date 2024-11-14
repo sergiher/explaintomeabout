@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
 
 const Input = styled(MuiInput)`
   width: 42px;
