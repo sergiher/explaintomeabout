@@ -17,7 +17,7 @@ export default function Home() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setIsPending(true);
-    fetch("http://127.0.0.1:5000/api/explain", {
+    fetch(process.env.NEXT_PUBLIC_PROXY_HOST + "api/explain", {
       method: "POST",
       body: JSON.stringify({
         subjectToLearnAbout: subjectToLearnAbout,
