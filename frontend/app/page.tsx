@@ -31,6 +31,12 @@ export default function Home() {
       .then((res) => setResponseText(res.responseText))
       .then(() => {
         setIsPending(false);
+      })
+      .catch((res) => {
+        setResponseText(
+          "I cannot provide information about this subject right now."
+        );
+        setIsPending(false);
       });
   };
 
@@ -72,8 +78,19 @@ export default function Home() {
               Let's go!
             </button>
           </div>
-          <div style={{ paddingTop: "13px" }}>
-            {isPending && <Update className="blink" />}
+          <div>
+            <Grid2
+              style={{
+                display: "grid",
+                justifyItems: "center",
+                paddingBottom: "20px",
+              }}
+            >
+              <Update
+                className="blink"
+                style={isPending === false ? { color: "transparent" } : {}}
+              />
+            </Grid2>
             <Typography>{responseText}</Typography>
           </div>
         </main>
