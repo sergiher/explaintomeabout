@@ -1,4 +1,4 @@
-<b>Explain to me about</b>
+<b>"Explain to me about"</b>
 -------------------------------
 I developed this app as a way to test out the Google AI API (Gemini API).
 
