@@ -14,7 +14,7 @@ export default function Home() {
   const [isPending, setIsPending] = useState(false);
   const [responseText, setResponseText] = useState("");
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setIsPending(true);
     fetch(process.env.NEXT_PUBLIC_PROXY_HOST + "api/explain", {
@@ -32,7 +32,7 @@ export default function Home() {
       .then(() => {
         setIsPending(false);
       })
-      .catch((res) => {
+      .catch(() => {
         setResponseText(
           "I cannot provide information about this subject right now."
         );
@@ -75,7 +75,7 @@ export default function Home() {
                 width={20}
                 height={20}
               />
-              Let's go!
+              Let&apos;s go!
             </button>
           </div>
           <div>
