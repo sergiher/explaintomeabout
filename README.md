@@ -8,7 +8,8 @@ Please, feel free to ask me any question about it.
 
 The next step I want to do is to stream the response, ala the known AI chatbots.
 
-To run the project:
+<b>To run the project:</b>
 
 /frontend$ npm run dev
+
 /backend$ python -m flask run
